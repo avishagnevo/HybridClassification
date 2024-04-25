@@ -108,6 +108,26 @@ source ifcnet-env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Conclusion
+## Citation
+If you use the IFCNet dataset or code please cite:
+```
+@inproceedings{emunds2021ifcnet,
+  title={IFCNet: A Benchmark Dataset for IFC Entity Classification},
+  author={Emunds, Christoph and Pauen, Nicolas and Richter, Veronika and Frisch, Jérôme and van Treeck, Christoph},
+  booktitle = {Proceedings of the 28th International Workshop on Intelligent Computing in Engineering (EG-ICE)},
+  year={2021},
+  month={June},
+  day={30}
+}
+```
 
+## Acknowledgements
+The code for the MVCNN and ArcGNN neural networks is based on the implementations of the original publications:
+* [RWTH-E3D](https://github.com/RWTH-E3D/ifcnet-models) 
+* [jongchyisu](https://github.com/jongchyisu/mvcnn_pytorch) 
+* [Guy Austern](https://www.mdpi.com/2075-5309/14/2/527)
+
+The structure of this repository is loosely based on the [cookiecutter data science project template](https://drivendata.github.io/cookiecutter-data-science/)
+
+## Conclusion
 This project demonstrates the potential of integrating CNNs with GNNs to improve 3D object classification with contextual connections.
