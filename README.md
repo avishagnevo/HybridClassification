@@ -5,7 +5,7 @@ Hybrid classification model for BIM objects, combining CNN and GNN
 This project integrates Convolutional Neural Networks (CNNs) and Graph Neural Networks (GNNs) to enhance the classification of Building Information Modeling (BIM) objects. By combining geometric feature extraction with contextual relationship understanding, this hybrid approach aims to significantly improve classification accuracy and robustness.
 
 ## Project Structure
-
+### /src 
 - `mvcnn.py` - Implements the Multi-View Convolutional Neural Network for processing 3D objects with 2D images from sevral angles.
 - `arcgnn.py` - Implements the Architecture Graph Neural Network for processing graph-based representations.
 - `hybrid.py` - Combines MVCNN and ArcGNN outputs using a fusion layer for final classification.
@@ -13,6 +13,11 @@ This project integrates Convolutional Neural Networks (CNNs) and Graph Neural Ne
 - `datasets.py` - Handles data preprocessing and loading for training and evaluation.
 - `models.py` - Contains the definitions of the MVCNN, SVCNN, ArcGNN, and Hybrid models.
 - `train_model.py` - Entry script that sets up and initiates the training process and configurations.
+
+### /notebooks
+- `MVCNN-Evaluation.ipynb` - evaluate pretrained model and visulize results
+- `ArcGNN-Evaluation.ipynb` - evaluate pretrained model and visulize results
+- `HybridModel-Evaluation.ipynb` - evaluate pretrained model and visulize results
 
 ## Methodology
 
@@ -58,7 +63,7 @@ For example (after creatign the virtual env):
 (ifcnet-env) (base) avishagnevo@Avishags-MBP ifcnet-models-master % python src/models/train_model.py HybridModel
 ```
 
-# Download and set the project data
+# Download and set the project data to put in /data directory
 
 Download the data for the MVCNN model you want to train and place them in the corresponding data folder:
 * [MVCNN](https://ifcnet.e3d.rwth-aachen.de/static/IFCNetCorePng.7z)
