@@ -41,7 +41,7 @@ cd repo/ifcnet-models-master
 # Activate the Python environment
 source ifcnet-env/bin/activate
 
-# Run the training script for a specific model
+# Run the training script for a specific model after you have inserted the data
 # Replace {Enum of the model you want to train} with MVCNN, ArcGNN, or HybridModel
 python src/models/train_model.py {Enum of the model you want to train}
 ```
@@ -51,7 +51,10 @@ For example:
 ```bash
 (base) avishagnevo@Avishags-MBP archi_project % cd ifcnet-models-master
 (base) avishagnevo@Avishags-MBP ifcnet-models-master % source ifcnet-env/bin/activate
+(ifcnet-env) (base) avishagnevo@Avishags-MBP ifcnet-models-master % python src/models/train_model.py HybridModel
 ```
+
+# Download and set the project data
 
 Download the data for the MVCNN model you want to train and place them in the corresponding data folder:
 * [MVCNN](https://ifcnet.e3d.rwth-aachen.de/static/IFCNetCorePng.7z)
