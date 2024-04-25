@@ -35,18 +35,22 @@ A dedicated Python environment is provided to manage dependencies and ensure rep
 
 ```bash
 # Clone the repository and navigate to the project directory
-git clone https://github.com/yourgithub/repo.git
-cd repo/ifcnet-models-master
+git clone https://github.com/avishagnevo/HybridClassification.git
+cd HybridClassification
 
-# Activate the Python environment
+# Create a virtual enviorment for the project (recommended)
+python3 -m venv ifcnet-env
+
+# Activate the Python environment and install required dependencies
 source ifcnet-env/bin/activate
+pip install -r requirements.txt
 
 # Run the training script for a specific model after you have inserted the data
 # Replace {Enum of the model you want to train} with MVCNN, ArcGNN, or HybridModel
 python src/models/train_model.py {Enum of the model you want to train}
 ```
 
-For example:
+For example (after creatign the virtual env):
 
 ```bash
 (base) avishagnevo@Avishags-MBP archi_project % cd ifcnet-models-master
@@ -101,14 +105,6 @@ for file_name in file_list:
 When building the ArchitecturalDataset the program would automaticlly create a directory named 'processed_subgraphs', available (after running once) at:
 ```bash
 cd data/processed/ArcGNN/RevitBuildings/processed_subgraphs
-```
-
-## Installation
-
-```bash
-cd ifcnet-models-master
-source ifcnet-env/bin/activate
-pip install -r requirements.txt
 ```
 
 ## Citation
