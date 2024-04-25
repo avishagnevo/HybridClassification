@@ -53,6 +53,53 @@ For example:
 (base) avishagnevo@Avishags-MBP ifcnet-models-master % source ifcnet-env/bin/activate
 ```
 
+Download the data for the MVCNN model you want to train and place them in the corresponding data folder:
+* [MVCNN](https://ifcnet.e3d.rwth-aachen.de/static/IFCNetCorePng.7z)
+
+```bash
+mkdir -p data/processed/MVCNN
+cd data/processed/MVCNN
+wget https://ifcnet.e3d.rwth-aachen.de/static/IFCNetCorePng.7z
+7z x IFCNetCorePng.7z
+```
+
+Get data for the ArcGNN model (BIM jsons) you want to train and place them in the corresponding data folder in a dirctory called 'raw':
+
+```bash
+mkdir -p data/processed/ArcGNN/RevitBuildings
+cd data/processed/ArcGNN/RevitBuildings
+```
+Now run the graph_splitter.ipynb of the raw jsons and place the created subgraphs (by building) in the corresponding data folder in a dirctory called 'subgraphs' for exmple:
+
+```bash
+json_path = '/Users/avishagnevo/Desktop/archi_project/ifcnet-models-master/data/processed/ArcGNN/RevitBuildings/raw'
+output_path = '/Users/avishagnevo/Desktop/archi_project/ifcnet-models-master/data/processed/ArcGNN/RevitBuildings/subgraphs'
+
+file_list = os.listdir(json_path) 
+
+for file_name in file_list:
+  file = os.path.join(json_path, file_name)
+  print ('opening ' + file)
+  with open(file, encoding="utf8") as f:
+    json_data = json.load(f)
+    edges = json_data['edges'][0]['relations'] #### the 2nd index depicts the type of relation
+    elements = json_data['elements_data']
+    G = helpers.CreateGraph(elements,edges)
+    subgraphs = CreateSubgraphs(elements, G)
+    #### the 2nd index depicts the type of relation, 0  is intersections 
+    f.close()
+
+  outfile = os.path.join(output_path, file_name[:-5]+ '_subgraphs.json')
+  with open(outfile, 'w', encoding="utf8") as fout:
+    json.dump(subgraphs, fout)
+    fout.close()
+```
+
+When building the ArchitecturalDataset the program would automaticlly create a directory named 'processed_subgraphs', available (after running once) at:
+```bash
+cd data/processed/ArcGNN/RevitBuildings/processed_subgraphs
+```
+
 ## Installation
 
 ```bash
